@@ -1,16 +1,17 @@
 {% extends "library/base.html" %}
 
-{% block title %}List Books{% endblock %}
+{% block title %}Book List{% endblock %}
 
 {% block content %}
-<h1>Books</h1>
-<table class="table table-striped">
-    <thead>
+<h1 class="mb-4">Library Books</h1>
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
         <tr>
             <th>Title</th>
             <th>Author</th>
             <th>Status</th>
             <th>Details</th>
+            <th>Assign</th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +28,20 @@
                 </td>
                 <td>
                     <a href="{% url 'book_detail' book.id %}" class="btn btn-primary btn-sm">View Details</a>
+                </td>
+                <td>
+                    <form action="{% url 'assign_book' book.id %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <select name="reader" class="form-select">
+                                <option value="">Select Reader</option>
+                                {% for reader in readers %}
+                                    <option value="{{ reader.id }}">{{ reader.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-sm">Assign</button>
+                    </form>
                 </td>
             </tr>
         {% endfor %}
