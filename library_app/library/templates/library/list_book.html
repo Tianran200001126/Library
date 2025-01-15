@@ -21,7 +21,7 @@
                 <td>{{ book.author }}</td>
                 <td>
                     {% if book.loaned_to %}
-                        <span class="badge bg-danger">Loaned to {{ book.loaned_to.name }}</span>
+                        <span class="badge bg-danger">borrowed to {{ book.loaned_to.name }}</span>
                     {% else %}
                         <span class="badge bg-success">Available</span>
                     {% endif %}
@@ -44,6 +44,8 @@
                     </form>
                 </td>
             </tr>
+            {% empty %}
+             <li>No books in the database</li>
         {% endfor %}
     </tbody>
 </table>

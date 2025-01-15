@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ reader.name }}'s Details</title>
+</head>
+<body>
+    <h1>Your Details</h1>
+    <p>Name: {{ reader.name }}</p>
+    
+    <h2>Books</h2>
+    <ul>
+        {% for book in borrowed_books %}
+            <li>{{ book.title }} by {{ book.author }}</li>
+        {% empty %}
+            <li>you have not borrowed any books.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

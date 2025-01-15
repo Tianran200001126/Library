@@ -7,7 +7,6 @@
 </head>
 <body>
     <h1>{{ reader.name }}</h1>
-    <p>Email: {{ reader.email }}</p>
     
     <h2>Borrowed Books</h2>
     <ul>
@@ -19,7 +18,6 @@
             <li>No books borrowed.</li>
         {% endfor %}
     </ul>
-    
     <a href="{% url 'list_readers' %}">Back to Reader List</a>
 </body>
 </html>
